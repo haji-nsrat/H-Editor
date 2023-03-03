@@ -81,7 +81,7 @@ namespace H_Editor
             else
             {
                 textBox1.Visible = true;
-                textBox1.Text = "testing on pc";
+                textBox1.Text = "testing on PC";
             }
         }
     }
