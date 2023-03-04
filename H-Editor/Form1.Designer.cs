@@ -41,18 +41,18 @@
             openToolStripMenuItem = new ToolStripMenuItem();
             newToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
             closeFolderToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
             testToolStripMenuItem = new ToolStripMenuItem();
             panel_files = new Panel();
+            label_opened_folder = new Label();
             treeView1 = new TreeView();
             imageList1 = new ImageList(components);
             button1 = new Button();
             panel_text = new Panel();
-            textBox1 = new TextBox();
+            richTextBox1 = new RichTextBox();
             folderBrowserDialog1 = new FolderBrowserDialog();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_logo).BeginInit();
@@ -74,7 +74,7 @@
             panel1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(998, 32);
+            panel1.Size = new Size(784, 32);
             panel1.TabIndex = 0;
             panel1.MouseDown += panel1_MouseDown;
             // 
@@ -85,7 +85,7 @@
             button_min.BackgroundImageLayout = ImageLayout.Center;
             button_min.FlatAppearance.BorderSize = 0;
             button_min.FlatStyle = FlatStyle.Flat;
-            button_min.Location = new Point(889, 0);
+            button_min.Location = new Point(675, 0);
             button_min.Name = "button_min";
             button_min.Padding = new Padding(5);
             button_min.Size = new Size(34, 32);
@@ -100,7 +100,7 @@
             button_full.BackgroundImageLayout = ImageLayout.Center;
             button_full.FlatAppearance.BorderSize = 0;
             button_full.FlatStyle = FlatStyle.Flat;
-            button_full.Location = new Point(925, 0);
+            button_full.Location = new Point(711, 0);
             button_full.Name = "button_full";
             button_full.Padding = new Padding(5);
             button_full.Size = new Size(34, 32);
@@ -115,7 +115,7 @@
             button_close.BackgroundImageLayout = ImageLayout.Center;
             button_close.FlatAppearance.BorderSize = 0;
             button_close.FlatStyle = FlatStyle.Flat;
-            button_close.Location = new Point(961, 0);
+            button_close.Location = new Point(747, 0);
             button_close.Name = "button_close";
             button_close.Padding = new Padding(5);
             button_close.Size = new Size(34, 32);
@@ -138,7 +138,7 @@
             // 
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Location = new Point(458, 7);
+            label1.Location = new Point(351, 7);
             label1.Name = "label1";
             label1.Size = new Size(90, 19);
             label1.TabIndex = 1;
@@ -163,7 +163,7 @@
             fileToolStripMenuItem.BackgroundImageLayout = ImageLayout.None;
             fileToolStripMenuItem.Checked = true;
             fileToolStripMenuItem.CheckState = CheckState.Checked;
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, newToolStripMenuItem, saveToolStripMenuItem, toolStripSeparator2, closeFolderToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, newToolStripMenuItem, saveToolStripMenuItem, closeFolderToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
             fileToolStripMenuItem.ForeColor = Color.White;
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 20);
@@ -193,13 +193,6 @@
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Size = new Size(135, 22);
             saveToolStripMenuItem.Text = "save";
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.BackColor = Color.FromArgb(62, 62, 66);
-            toolStripSeparator2.ForeColor = Color.White;
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(132, 6);
             // 
             // closeFolderToolStripMenuItem
             // 
@@ -238,32 +231,42 @@
             // testToolStripMenuItem
             // 
             testToolStripMenuItem.Name = "testToolStripMenuItem";
-            testToolStripMenuItem.Size = new Size(93, 22);
+            testToolStripMenuItem.Size = new Size(180, 22);
             testToolStripMenuItem.Text = "test";
             // 
             // panel_files
             // 
             panel_files.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel_files.BackColor = Color.FromArgb(45, 45, 48);
+            panel_files.Controls.Add(label_opened_folder);
             panel_files.Controls.Add(treeView1);
             panel_files.Controls.Add(button1);
             panel_files.ForeColor = Color.White;
             panel_files.Location = new Point(0, 0);
             panel_files.Margin = new Padding(0);
             panel_files.Name = "panel_files";
-            panel_files.Size = new Size(239, 667);
+            panel_files.Size = new Size(239, 467);
             panel_files.TabIndex = 1;
+            // 
+            // label_opened_folder
+            // 
+            label_opened_folder.AutoSize = true;
+            label_opened_folder.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_opened_folder.Location = new Point(1, 2);
+            label_opened_folder.Name = "label_opened_folder";
+            label_opened_folder.Size = new Size(0, 21);
+            label_opened_folder.TabIndex = 2;
             // 
             // treeView1
             // 
             treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             treeView1.BackColor = Color.FromArgb(45, 45, 48);
             treeView1.BorderStyle = BorderStyle.None;
-            treeView1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            treeView1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             treeView1.ForeColor = Color.White;
-            treeView1.Location = new Point(0, 0);
+            treeView1.Location = new Point(0, 27);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(239, 667);
+            treeView1.Size = new Size(239, 440);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 1;
             treeView1.Visible = false;
@@ -302,28 +305,28 @@
             // 
             panel_text.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel_text.BackColor = Color.FromArgb(30, 30, 30);
-            panel_text.Controls.Add(textBox1);
+            panel_text.Controls.Add(richTextBox1);
             panel_text.Controls.Add(panel_files);
             panel_text.Location = new Point(0, 32);
             panel_text.Name = "panel_text";
-            panel_text.Size = new Size(998, 667);
+            panel_text.Size = new Size(784, 467);
             panel_text.TabIndex = 2;
             // 
-            // textBox1
+            // richTextBox1
             // 
-            textBox1.AcceptsTab = true;
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.BackColor = Color.FromArgb(30, 30, 30);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Cursor = Cursors.IBeam;
-            textBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(238, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(761, 667);
-            textBox1.TabIndex = 0;
-            textBox1.Visible = false;
+            richTextBox1.AcceptsTab = true;
+            richTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            richTextBox1.BackColor = Color.FromArgb(30, 30, 30);
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.ForeColor = Color.White;
+            richTextBox1.Location = new Point(242, 0);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(542, 467);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Text = "";
+            richTextBox1.Visible = false;
+            richTextBox1.ZoomFactor = 1.25F;
+            richTextBox1.KeyDown += richTextBox1_KeyDown;
             // 
             // Form1
             // 
@@ -331,12 +334,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(62, 62, 66);
-            ClientSize = new Size(998, 698);
+            ClientSize = new Size(784, 498);
             ControlBox = false;
             Controls.Add(panel_text);
             Controls.Add(panel1);
             ForeColor = Color.White;
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             MinimumSize = new Size(500, 500);
@@ -347,8 +349,8 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel_files.ResumeLayout(false);
+            panel_files.PerformLayout();
             panel_text.ResumeLayout(false);
-            panel_text.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -367,10 +369,8 @@
         private Panel panel_files;
         private Panel panel_text;
         private Button button1;
-        private TextBox textBox1;
         private FolderBrowserDialog folderBrowserDialog1;
         private TreeView treeView1;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem closeFolderToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ImageList imageList1;
@@ -378,5 +378,8 @@
         private Button button_min;
         private Button button_full;
         private ToolStripMenuItem testToolStripMenuItem;
+        private RichTextBox richTextBox1;
+        private TextBox textBox1;
+        private Label label_opened_folder;
     }
 }

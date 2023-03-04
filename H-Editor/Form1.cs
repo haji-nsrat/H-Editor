@@ -1,5 +1,7 @@
+using Microsoft.VisualBasic.Devices;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace H_Editor
 {
@@ -19,7 +21,7 @@ namespace H_Editor
             button1.Select();
 
         }
-         
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -33,7 +35,8 @@ namespace H_Editor
         {
             treeView1.Nodes.Clear();
             treeView1.Visible = false;
-            textBox1.Visible = false;
+            richTextBox1.Visible = false;
+            label_opened_folder.Text = "";
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,13 +69,13 @@ namespace H_Editor
             switch (panel_files.Visible)
             {
                 case true:
-                    textBox1.Location = new Point(0, 0);
-                    textBox1.Size = new Size(panel_text.Width, panel_text.Height);
+                    richTextBox1.Location = new Point(0, 0);
+                    richTextBox1.Size = new Size(panel_text.Width, panel_text.Height);
                     panel_files.Visible = false;
                     break;
                 case false:
-                    textBox1.Location = new Point(238, 0);
-                    textBox1.Size = new Size(panel_text.Width - treeView1.Width, panel_text.Height);
+                    richTextBox1.Location = new Point(treeView1.Width + 2, 0);
+                    richTextBox1.Size = new Size(panel_text.Width - treeView1.Width, panel_text.Height);
                     panel_files.Visible = true;
                     break;
             }
@@ -88,12 +91,14 @@ namespace H_Editor
             treeView1.ImageList = imageList1;
             treeView1.Visible = true;
 
+            string[] partsofpath = folderBrowserDialog1.SelectedPath.Split('\\');
+            label_opened_folder.Text = partsofpath[partsofpath.Length - 1];
+
             foreach (var item in Directory.GetDirectories(folderBrowserDialog1.SelectedPath))
             {
                 DirectoryInfo id = new DirectoryInfo(item);
                 var node = treeView1.Nodes.Add(id.Name, id.Name, 0, 1);
                 node.Tag = id;
-
             }
             foreach (var item in Directory.GetFiles(folderBrowserDialog1.SelectedPath))
             {
@@ -129,17 +134,45 @@ namespace H_Editor
             }
             else
             {
-                textBox1.Visible = true;
+                Cursor.Current = Cursors.WaitCursor;
+                richTextBox1.Visible = true;
                 var file_path = e.Node.Tag.ToString();
                 if (File.Exists(file_path))
                 {
-                    textBox1.Text = File.ReadAllText(file_path);
+                    richTextBox1.Text = File.ReadAllText(file_path);
                 }
                 else
                 {
                     // file doesn't exists
                 }
+                Cursor.Current = Cursors.Default;
 
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)65)
+            {
+                button_min_Click(sender, e);
+            }
+        }
+
+        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+
+        }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.K && e.Control)
+            {
+                richTextBox1.ZoomFactor += 0.1f;
+            }
+            else if (e.KeyCode == Keys.L && e.Control)
+            {
+                richTextBox1.ZoomFactor -= 0.1f;
             }
         }
     }
