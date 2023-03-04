@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 
 namespace H_Editor
 {
@@ -16,8 +17,9 @@ namespace H_Editor
         {
             InitializeComponent();
             button1.Select();
-        }
 
+        }
+         
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -44,24 +46,37 @@ namespace H_Editor
             Application.Exit();
         }
 
+        private void button_full_Click(object sender, EventArgs e)
+        {
+            this.WindowState = this.WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
+        }
+
+        private void button_min_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             button1_Click(sender, e);
         }
+
         private void pictureBox_logo_Click(object sender, EventArgs e)
         {
-            if (panel_files.Visible)
+            switch (panel_files.Visible)
             {
-                textBox1.Location = new Point(0, 0);
-                textBox1.Size = new Size(panel_text.Width, panel_text.Height);
-                panel_files.Visible = false;
+                case true:
+                    textBox1.Location = new Point(0, 0);
+                    textBox1.Size = new Size(panel_text.Width, panel_text.Height);
+                    panel_files.Visible = false;
+                    break;
+                case false:
+                    textBox1.Location = new Point(238, 0);
+                    textBox1.Size = new Size(panel_text.Width - treeView1.Width, panel_text.Height);
+                    panel_files.Visible = true;
+                    break;
             }
-            else
-            {
-                textBox1.Location = new Point(238, 0);
-                textBox1.Size = new Size(panel_text.Width - treeView1.Width, panel_text.Height);
-                panel_files.Visible = true;
-            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
