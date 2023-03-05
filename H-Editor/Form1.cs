@@ -149,6 +149,9 @@ namespace H_Editor
                 var file_path = e.Node.Tag.ToString();
                 if (File.Exists(file_path))
                 {
+                    ///////////////////////////////////////////////////////////////////////////////////////
+                    // here you should be opening the file and leave it open to work with it and save it //
+
                     richTextBox1.Text = File.ReadAllText(file_path);
                 }
                 else
