@@ -47,6 +47,10 @@
             editToolStripMenuItem = new ToolStripMenuItem();
             testToolStripMenuItem = new ToolStripMenuItem();
             panel_files = new Panel();
+            button_close_box = new Button();
+            textBox_new = new TextBox();
+            button_new_folder = new Button();
+            button_new_file = new Button();
             label_opened_folder = new Label();
             treeView1 = new TreeView();
             imageList1 = new ImageList(components);
@@ -74,7 +78,7 @@
             panel1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(784, 32);
+            panel1.Size = new Size(798, 32);
             panel1.TabIndex = 0;
             panel1.MouseDown += panel1_MouseDown;
             // 
@@ -85,7 +89,7 @@
             button_min.BackgroundImageLayout = ImageLayout.Center;
             button_min.FlatAppearance.BorderSize = 0;
             button_min.FlatStyle = FlatStyle.Flat;
-            button_min.Location = new Point(675, 0);
+            button_min.Location = new Point(689, 0);
             button_min.Name = "button_min";
             button_min.Padding = new Padding(5);
             button_min.Size = new Size(34, 32);
@@ -100,7 +104,7 @@
             button_full.BackgroundImageLayout = ImageLayout.Center;
             button_full.FlatAppearance.BorderSize = 0;
             button_full.FlatStyle = FlatStyle.Flat;
-            button_full.Location = new Point(711, 0);
+            button_full.Location = new Point(725, 0);
             button_full.Name = "button_full";
             button_full.Padding = new Padding(5);
             button_full.Size = new Size(34, 32);
@@ -115,7 +119,7 @@
             button_close.BackgroundImageLayout = ImageLayout.Center;
             button_close.FlatAppearance.BorderSize = 0;
             button_close.FlatStyle = FlatStyle.Flat;
-            button_close.Location = new Point(747, 0);
+            button_close.Location = new Point(761, 0);
             button_close.Name = "button_close";
             button_close.Padding = new Padding(5);
             button_close.Size = new Size(34, 32);
@@ -138,7 +142,7 @@
             // 
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Location = new Point(351, 7);
+            label1.Location = new Point(358, 7);
             label1.Name = "label1";
             label1.Size = new Size(90, 19);
             label1.TabIndex = 1;
@@ -231,13 +235,17 @@
             // testToolStripMenuItem
             // 
             testToolStripMenuItem.Name = "testToolStripMenuItem";
-            testToolStripMenuItem.Size = new Size(180, 22);
+            testToolStripMenuItem.Size = new Size(93, 22);
             testToolStripMenuItem.Text = "test";
             // 
             // panel_files
             // 
             panel_files.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            panel_files.BackColor = Color.FromArgb(45, 45, 48);
+            panel_files.BackColor = Color.FromArgb(43, 43, 45);
+            panel_files.Controls.Add(button_close_box);
+            panel_files.Controls.Add(textBox_new);
+            panel_files.Controls.Add(button_new_folder);
+            panel_files.Controls.Add(button_new_file);
             panel_files.Controls.Add(label_opened_folder);
             panel_files.Controls.Add(treeView1);
             panel_files.Controls.Add(button1);
@@ -247,6 +255,60 @@
             panel_files.Name = "panel_files";
             panel_files.Size = new Size(239, 467);
             panel_files.TabIndex = 1;
+            // 
+            // button_close_box
+            // 
+            button_close_box.BackgroundImage = (Image)resources.GetObject("button_close_box.BackgroundImage");
+            button_close_box.BackgroundImageLayout = ImageLayout.Center;
+            button_close_box.FlatAppearance.BorderSize = 0;
+            button_close_box.FlatStyle = FlatStyle.Flat;
+            button_close_box.Location = new Point(208, 4);
+            button_close_box.Name = "button_close_box";
+            button_close_box.Size = new Size(28, 23);
+            button_close_box.TabIndex = 5;
+            button_close_box.UseVisualStyleBackColor = true;
+            button_close_box.Visible = false;
+            button_close_box.Click += button_close_box_Click;
+            // 
+            // textBox_new
+            // 
+            textBox_new.BackColor = Color.FromArgb(50, 50, 50);
+            textBox_new.Location = new Point(5, 4);
+            textBox_new.Name = "textBox_new";
+            textBox_new.Size = new Size(201, 23);
+            textBox_new.TabIndex = 4;
+            textBox_new.Visible = false;
+            textBox_new.KeyDown += textBox_new_KeyDown;
+            // 
+            // button_new_folder
+            // 
+            button_new_folder.BackColor = Color.FromArgb(45, 45, 48);
+            button_new_folder.BackgroundImage = (Image)resources.GetObject("button_new_folder.BackgroundImage");
+            button_new_folder.BackgroundImageLayout = ImageLayout.Center;
+            button_new_folder.FlatAppearance.BorderSize = 0;
+            button_new_folder.FlatStyle = FlatStyle.Flat;
+            button_new_folder.Location = new Point(202, 0);
+            button_new_folder.Name = "button_new_folder";
+            button_new_folder.Size = new Size(34, 26);
+            button_new_folder.TabIndex = 3;
+            button_new_folder.UseVisualStyleBackColor = false;
+            button_new_folder.Visible = false;
+            button_new_folder.Click += button_new_folder_Click;
+            // 
+            // button_new_file
+            // 
+            button_new_file.BackColor = Color.FromArgb(45, 45, 48);
+            button_new_file.BackgroundImage = (Image)resources.GetObject("button_new_file.BackgroundImage");
+            button_new_file.BackgroundImageLayout = ImageLayout.Center;
+            button_new_file.FlatAppearance.BorderSize = 0;
+            button_new_file.FlatStyle = FlatStyle.Flat;
+            button_new_file.Location = new Point(167, 0);
+            button_new_file.Name = "button_new_file";
+            button_new_file.Size = new Size(34, 26);
+            button_new_file.TabIndex = 3;
+            button_new_file.UseVisualStyleBackColor = false;
+            button_new_file.Visible = false;
+            button_new_file.Click += button_new_file_Click;
             // 
             // label_opened_folder
             // 
@@ -264,9 +326,9 @@
             treeView1.BorderStyle = BorderStyle.None;
             treeView1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             treeView1.ForeColor = Color.White;
-            treeView1.Location = new Point(0, 27);
+            treeView1.Location = new Point(0, 32);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(239, 440);
+            treeView1.Size = new Size(239, 435);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 1;
             treeView1.Visible = false;
@@ -309,7 +371,7 @@
             panel_text.Controls.Add(panel_files);
             panel_text.Location = new Point(0, 32);
             panel_text.Name = "panel_text";
-            panel_text.Size = new Size(784, 467);
+            panel_text.Size = new Size(798, 467);
             panel_text.TabIndex = 2;
             // 
             // richTextBox1
@@ -321,7 +383,7 @@
             richTextBox1.ForeColor = Color.White;
             richTextBox1.Location = new Point(242, 0);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(542, 467);
+            richTextBox1.Size = new Size(556, 467);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             richTextBox1.Visible = false;
@@ -334,11 +396,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(62, 62, 66);
-            ClientSize = new Size(784, 498);
+            ClientSize = new Size(798, 498);
             ControlBox = false;
             Controls.Add(panel_text);
             Controls.Add(panel1);
             ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             MinimumSize = new Size(500, 500);
@@ -381,5 +444,9 @@
         private RichTextBox richTextBox1;
         private TextBox textBox1;
         private Label label_opened_folder;
+        private Button button_new_folder;
+        private Button button_new_file;
+        private TextBox textBox_new;
+        private Button button_close_box;
     }
 }

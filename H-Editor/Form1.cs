@@ -36,6 +36,8 @@ namespace H_Editor
             treeView1.Nodes.Clear();
             treeView1.Visible = false;
             richTextBox1.Visible = false;
+            button_new_file.Visible = false;
+            button_new_folder.Visible = false;
             label_opened_folder.Text = "";
         }
 
@@ -87,9 +89,16 @@ namespace H_Editor
             folderBrowserDialog1.ShowDialog();
             if (folderBrowserDialog1.SelectedPath == "") { return; }
 
-            treeView1.Nodes.Clear();
             treeView1.ImageList = imageList1;
             treeView1.Visible = true;
+            button_new_file.Visible = true;
+            button_new_folder.Visible = true;
+
+            add_and_refresh_dir();
+        }
+        private void add_and_refresh_dir()
+        {
+            treeView1.Nodes.Clear();
 
             string[] partsofpath = folderBrowserDialog1.SelectedPath.Split('\\');
             label_opened_folder.Text = partsofpath[partsofpath.Length - 1];
@@ -107,6 +116,7 @@ namespace H_Editor
                 node.Tag = id;
             }
         }
+
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -150,20 +160,6 @@ namespace H_Editor
             }
         }
 
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)65)
-            {
-                button_min_Click(sender, e);
-            }
-        }
-
-        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-
-        }
-
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.K && e.Control)
@@ -174,6 +170,73 @@ namespace H_Editor
             {
                 richTextBox1.ZoomFactor -= 0.1f;
             }
+
+            if (e.KeyCode == Keys.S && e.Control)
+            {
+
+            }
+        }
+
+        // create
+        private string is_it_file_or_folder = "";
+        private void button_new_folder_Click(object sender, EventArgs e)
+        {
+            textBox_new.Visible = true;
+            button_close_box.Visible = true;
+            button_new_file.Visible = false;
+            button_new_folder.Visible = false;
+            is_it_file_or_folder = "folder";
+        }
+
+        private void button_new_file_Click(object sender, EventArgs e)
+        {
+            textBox_new.Visible = true;
+            button_close_box.Visible = true;
+            button_new_file.Visible = false;
+            button_new_folder.Visible = false;
+            is_it_file_or_folder = "file";
+        }
+
+
+        private void textBox_new_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string ff_name = textBox_new.Text;
+
+                if (is_it_file_or_folder == "folder")
+                {
+                    string path = folderBrowserDialog1.SelectedPath + "\\" + ff_name;
+
+                    bool exists = System.IO.Directory.Exists(path);
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(path);
+                }
+                else
+                {
+                    string path = folderBrowserDialog1.SelectedPath + "\\" + ff_name;
+                    if (!System.IO.File.Exists(path))
+                        System.IO.File.Create(path).Close();
+                }
+                textBox_new.Text = "";
+                textBox_new.Visible = false;
+                button_close_box.Visible = false;
+                button_new_file.Visible = true;
+                button_new_folder.Visible = true;
+                add_and_refresh_dir();
+            }
+
+        }
+
+        private void button_close_box_Click(object sender, EventArgs e)
+        {
+            textBox_new.Text = "";
+            textBox_new.Visible = false;
+            button_close_box.Visible = false;
+            button_new_file.Visible = true;
+            button_new_folder.Visible = true;
+            add_and_refresh_dir();
         }
     }
 }
