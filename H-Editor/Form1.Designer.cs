@@ -442,7 +442,6 @@
         private Button button_full;
         private ToolStripMenuItem testToolStripMenuItem;
         private RichTextBox richTextBox1;
-        private TextBox textBox1;
         private Label label_opened_folder;
         private Button button_new_folder;
         private Button button_new_file;
