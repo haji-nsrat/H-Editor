@@ -97,6 +97,7 @@ namespace H_Editor
             treeView1.Visible = true;
             button_new_file.Visible = true;
             button_new_folder.Visible = true;
+            button_refresh_tree.Visible = true;
 
             add_and_refresh_dir();
         }
@@ -192,6 +193,7 @@ namespace H_Editor
             button_close_box.Visible = true;
             button_new_file.Visible = false;
             button_new_folder.Visible = false;
+            button_refresh_tree.Visible = false;
             is_it_file_or_folder = "folder";
         }
 
@@ -201,6 +203,7 @@ namespace H_Editor
             button_close_box.Visible = true;
             button_new_file.Visible = false;
             button_new_folder.Visible = false;
+            button_refresh_tree.Visible = false;
             is_it_file_or_folder = "file";
         }
 
@@ -231,6 +234,7 @@ namespace H_Editor
                 button_close_box.Visible = false;
                 button_new_file.Visible = true;
                 button_new_folder.Visible = true;
+                button_refresh_tree.Visible = true;
                 add_and_refresh_dir();
             }
 
@@ -243,6 +247,7 @@ namespace H_Editor
             button_close_box.Visible = false;
             button_new_file.Visible = true;
             button_new_folder.Visible = true;
+            button_refresh_tree.Visible = true;
             add_and_refresh_dir();
         }
 
@@ -264,6 +269,11 @@ namespace H_Editor
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             button_save_file.Text = "save *";
+        }
+
+        private void button_refresh_tree_Click(object sender, EventArgs e)
+        {
+            add_and_refresh_dir();
         }
     }
 }

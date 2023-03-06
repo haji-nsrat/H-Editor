@@ -50,6 +50,7 @@
             button_close_box = new Button();
             textBox_new = new TextBox();
             button_new_folder = new Button();
+            button_refresh_tree = new Button();
             button_new_file = new Button();
             label_opened_folder = new Label();
             treeView1 = new TreeView();
@@ -249,6 +250,7 @@
             panel_files.Controls.Add(button_close_box);
             panel_files.Controls.Add(textBox_new);
             panel_files.Controls.Add(button_new_folder);
+            panel_files.Controls.Add(button_refresh_tree);
             panel_files.Controls.Add(button_new_file);
             panel_files.Controls.Add(label_opened_folder);
             panel_files.Controls.Add(treeView1);
@@ -299,6 +301,21 @@
             button_new_folder.UseVisualStyleBackColor = false;
             button_new_folder.Visible = false;
             button_new_folder.Click += button_new_folder_Click;
+            // 
+            // button_refresh_tree
+            // 
+            button_refresh_tree.BackColor = Color.FromArgb(45, 45, 48);
+            button_refresh_tree.BackgroundImage = (Image)resources.GetObject("button_refresh_tree.BackgroundImage");
+            button_refresh_tree.BackgroundImageLayout = ImageLayout.Center;
+            button_refresh_tree.FlatAppearance.BorderSize = 0;
+            button_refresh_tree.FlatStyle = FlatStyle.Flat;
+            button_refresh_tree.Location = new Point(132, 0);
+            button_refresh_tree.Name = "button_refresh_tree";
+            button_refresh_tree.Size = new Size(34, 26);
+            button_refresh_tree.TabIndex = 3;
+            button_refresh_tree.UseVisualStyleBackColor = false;
+            button_refresh_tree.Visible = false;
+            button_refresh_tree.Click += button_refresh_tree_Click;
             // 
             // button_new_file
             // 
@@ -389,6 +406,7 @@
             richTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBox1.BackColor = Color.FromArgb(30, 30, 30);
             richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Font = new Font("Cascadia Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox1.ForeColor = Color.White;
             richTextBox1.Location = new Point(245, 29);
             richTextBox1.Name = "richTextBox1";
@@ -515,5 +533,6 @@
         private Button button_close_file;
         private Button button_save_file;
         private Label label_controls;
+        private Button button_refresh_tree;
     }
 }
