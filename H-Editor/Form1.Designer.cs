@@ -57,6 +57,10 @@
             button1 = new Button();
             panel_text = new Panel();
             richTextBox1 = new RichTextBox();
+            label_controls = new Label();
+            button_save_file = new Button();
+            button_close_file = new Button();
+            label_file_name = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_logo).BeginInit();
@@ -273,6 +277,7 @@
             // textBox_new
             // 
             textBox_new.BackColor = Color.FromArgb(50, 50, 50);
+            textBox_new.ForeColor = Color.White;
             textBox_new.Location = new Point(5, 4);
             textBox_new.Name = "textBox_new";
             textBox_new.Size = new Size(201, 23);
@@ -368,6 +373,10 @@
             panel_text.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel_text.BackColor = Color.FromArgb(30, 30, 30);
             panel_text.Controls.Add(richTextBox1);
+            panel_text.Controls.Add(label_controls);
+            panel_text.Controls.Add(button_save_file);
+            panel_text.Controls.Add(button_close_file);
+            panel_text.Controls.Add(label_file_name);
             panel_text.Controls.Add(panel_files);
             panel_text.Location = new Point(0, 32);
             panel_text.Name = "panel_text";
@@ -381,14 +390,68 @@
             richTextBox1.BackColor = Color.FromArgb(30, 30, 30);
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.ForeColor = Color.White;
-            richTextBox1.Location = new Point(242, 0);
+            richTextBox1.Location = new Point(245, 29);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(556, 467);
+            richTextBox1.Size = new Size(553, 435);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             richTextBox1.Visible = false;
             richTextBox1.ZoomFactor = 1.25F;
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             richTextBox1.KeyDown += richTextBox1_KeyDown;
+            // 
+            // label_controls
+            // 
+            label_controls.AutoSize = true;
+            label_controls.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label_controls.ForeColor = Color.FromArgb(100, 100, 105);
+            label_controls.Location = new Point(371, 171);
+            label_controls.Name = "label_controls";
+            label_controls.Size = new Size(276, 84);
+            label_controls.TabIndex = 4;
+            label_controls.Text = "ctrl + K, to make the text size bigger\r\nctrl + L, to make the text size smaller\r\nctrl + S, to save the file\r\n...\r\n";
+            // 
+            // button_save_file
+            // 
+            button_save_file.BackColor = Color.FromArgb(54, 54, 56);
+            button_save_file.FlatAppearance.BorderSize = 0;
+            button_save_file.FlatStyle = FlatStyle.Flat;
+            button_save_file.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            button_save_file.Location = new Point(698, 0);
+            button_save_file.Name = "button_save_file";
+            button_save_file.Size = new Size(50, 23);
+            button_save_file.TabIndex = 3;
+            button_save_file.Text = "save";
+            button_save_file.UseVisualStyleBackColor = false;
+            button_save_file.Visible = false;
+            button_save_file.Click += button_save_file_Click;
+            // 
+            // button_close_file
+            // 
+            button_close_file.BackColor = Color.FromArgb(54, 54, 56);
+            button_close_file.FlatAppearance.BorderSize = 0;
+            button_close_file.FlatStyle = FlatStyle.Flat;
+            button_close_file.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            button_close_file.Location = new Point(748, 0);
+            button_close_file.Name = "button_close_file";
+            button_close_file.Size = new Size(50, 23);
+            button_close_file.TabIndex = 3;
+            button_close_file.Text = "close";
+            button_close_file.UseVisualStyleBackColor = false;
+            button_close_file.Visible = false;
+            button_close_file.Click += button_close_file_Click;
+            // 
+            // label_file_name
+            // 
+            label_file_name.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label_file_name.BackColor = Color.FromArgb(54, 54, 56);
+            label_file_name.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_file_name.Location = new Point(239, 0);
+            label_file_name.Name = "label_file_name";
+            label_file_name.Size = new Size(462, 23);
+            label_file_name.TabIndex = 2;
+            label_file_name.Text = "file name";
+            label_file_name.Visible = false;
             // 
             // Form1
             // 
@@ -414,6 +477,7 @@
             panel_files.ResumeLayout(false);
             panel_files.PerformLayout();
             panel_text.ResumeLayout(false);
+            panel_text.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -447,5 +511,9 @@
         private Button button_new_file;
         private TextBox textBox_new;
         private Button button_close_box;
+        private Label label_file_name;
+        private Button button_close_file;
+        private Button button_save_file;
+        private Label label_controls;
     }
 }

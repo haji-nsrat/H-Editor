@@ -36,6 +36,10 @@ namespace H_Editor
             treeView1.Nodes.Clear();
             treeView1.Visible = false;
             richTextBox1.Visible = false;
+            label_file_name.Visible = false;
+            button_close_file.Visible = false;
+            button_save_file.Visible = false;
+
             button_new_file.Visible = false;
             button_new_folder.Visible = false;
             label_opened_folder.Text = "";
@@ -149,17 +153,18 @@ namespace H_Editor
                 var file_path = e.Node.Tag.ToString();
                 if (File.Exists(file_path))
                 {
-                    ///////////////////////////////////////////////////////////////////////////////////////
-                    // here you should be opening the file and leave it open to work with it and save it //
+                    label_file_name.Visible = true;
+                    button_close_file.Visible = true;
+                    button_save_file.Visible = true;
+
+                    string[] partsofpath = file_path.Split('\\');
+                    label_file_name.Text = partsofpath[partsofpath.Length - 1];
+
 
                     richTextBox1.Text = File.ReadAllText(file_path);
-                }
-                else
-                {
-                    // file doesn't exists
+                    button_save_file.Text = "save";
                 }
                 Cursor.Current = Cursors.Default;
-
             }
         }
 
@@ -173,10 +178,9 @@ namespace H_Editor
             {
                 richTextBox1.ZoomFactor -= 0.1f;
             }
-
-            if (e.KeyCode == Keys.S && e.Control)
+            else if (e.KeyCode == Keys.S && e.Control)
             {
-
+                button_save_file_Click(sender, e);
             }
         }
 
@@ -240,6 +244,26 @@ namespace H_Editor
             button_new_file.Visible = true;
             button_new_folder.Visible = true;
             add_and_refresh_dir();
+        }
+
+        private void button_close_file_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Visible = false;
+            label_file_name.Visible = false;
+            button_close_file.Visible = false;
+            button_save_file.Visible = false;
+        }
+
+        private void button_save_file_Click(object sender, EventArgs e)
+        {
+            string file_path = folderBrowserDialog1.SelectedPath + "\\" + label_file_name.Text;
+            File.WriteAllText(file_path, richTextBox1.Text);
+            button_save_file.Text = "save";
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            button_save_file.Text = "save *";
         }
     }
 }
